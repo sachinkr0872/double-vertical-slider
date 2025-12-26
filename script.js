@@ -7,4 +7,21 @@ const slidesLength = slideRight.querySelector('div').length
 
 let activeSlideIndex = 0
 
-slideLeft.style.top = `-`
+slideLeft.style.top = `-${(slidesLength -1) * 100}vh`
+
+upButton.addEventListener('click' , () => chnageSlide('up'))
+downButton.addEventListener('click' , () => chnageSlide('down'))
+
+
+const chnageSlide = (direction) => {
+    const sliderHeight = sliderContainer.clientHeight
+    if(direction === 'up'){
+        activeSlideIndex++
+        if(activeSlideIndex > slidesLength - 1){
+            activeSlideIndex = 0
+
+        }
+    }
+    
+    slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`
+}
